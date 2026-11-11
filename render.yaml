@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: hmc-solar-admin
+    runtime: node
+    plan: free
+    region: frankfurt
+    autoDeploy: true
+    buildCommand: cd app && npm install && npm run build
+    startCommand: cd app && node render-server.mjs
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: '22'
